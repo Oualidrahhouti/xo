@@ -1,7 +1,33 @@
 <main class="main">
-  <div class="content">
-    <square></square>
-    <square></square>
+  <div class="w-screen flex flex-col items-center justify-center m-9 flex-wrap">
+    <div *ngIf="!gameOver" class="mb-4 text-xl">
+      Current Player: {{ currentPlayer }}
+    </div>
+
+    <div *ngIf="winner" class="mb-4 text-2xl font-bold text-green-600">
+      Player: {{ winner }} wins !
+    </div>
+
+    <div
+      *ngIf="gameOver && !winner"
+      class="mb-4 text-2xl font-bold text-amber-600"
+    >
+      Game ended in a draw!
+    </div>
+
+    <div class="flex justify-center w-75 flex-wrap gap-1">
+      <square
+        *ngFor="let square of squares; let i = index"
+        [index]="i"
+      ></square>
+    </div>
+
+    <button
+      (click)="resetGame()"
+      class="w-35 mt-6 px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-blue-700 transition-colors"
+    >
+      Reset Game
+    </button>
   </div>
 </main>
 
