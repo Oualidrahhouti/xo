@@ -67,7 +67,7 @@ export class GameService {
   }
 
   private checkDraw(): boolean {
-    return this.boardSubject.value.every((square) => square !== '');
+    return !this.boardSubject.value.some((square) => square === '');
   }
 
   resetGame(): void {
